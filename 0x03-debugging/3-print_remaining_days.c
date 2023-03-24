@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -12,41 +11,28 @@
 
 void print_remaining_days(int month, int day, int year)
 {
-    int days_in_month[12];
-    int days_in_feb;
-    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
-    {
-        days_in_feb = 29;
-    }
-    else
-    {
-        days_in_feb = 28;
-    }
-    days_in_month[0] = 31;
-    days_in_month[1] = days_in_feb;
-    days_in_month[2] = 31;
-    days_in_month[3] = 30;
-    days_in_month[4] = 31;
-    days_in_month[5] = 30;
-    days_in_month[6] = 31;
-    days_in_month[7] = 31;
-    days_in_month[8] = 30;
-    days_in_month[9] = 31;
-    days_in_month[10] = 30;
-    days_in_month[11] = 31;
+	int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int total_days = 365;
+	int day_of_year = day;
 
-    int total_days = 0;
-    for (int i = 0; i < month - 1; i++)
-    {
-        total_days += days_in_month[i];
-    }
-    total_days += day;
+	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+	{
+	days_in_month[1] = 29;
+	total_days = 366;
+	}
 
-    if (days_in_feb == 29 && month > 2)
-    {
-        total_days--;
-    }
+	if (month < 1 || month > 12 || day < 1 || day > days_in_month[month - 1])
+	{
+	printf("Invalid date: %02d/%02d/%04d\n", month, day, year);
+	return;
+	}
 
-    printf("Day of the year: %d\n", total_days);
+	for (int i = 0; i < month - 1; i++)
+	{
+	day_of_year += days_in_month[i];
+	}
+
+	printf("Day of the year: %d\n", day_of_year);
+	printf("Remaining days: %d\n", total_days - day_of_year);
 }
 
