@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	char s1[2098] = "Hello ";
+	char s1[1024] = "Hello ";
 	char s2[] = "World!\n";
 	char *ptr;
 
