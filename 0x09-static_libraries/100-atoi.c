@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include "main.h"
 
 
 /**
@@ -9,8 +7,10 @@
  *
  * Return: The integer value of the converted string.
  */
-int _atoi(char *s)
+int _atoi(void)
 {
-	/* code goes here: Implement function */
+	/* empty function */
+
+	return 0;
 }
 
