@@ -2,29 +2,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *create_buffer(char *file);
-void close_file(int fd);
+char *create_Buffer(char *file);
+void close_file(int file_d);
 
 /**
- * create_buffer - The func allocates bytes for a buffer (1024).
+ * create_Buffer - The func allocates bytes for a buffer (1024).
  * @file: Name of the file buffer is storing characters for.
  *
  * Return: Pointer to our newly-allocated buffer.
  */
-char *create_buffer(char *file)
+char *create_Buffer(char *file)
 {
-	char *buffer;
+	char *Buffer;
 
-	buffer = malloc(sizeof(char) * 1024);
+	Buffer = malloc(sizeof(char) * 1024);
 
-	if (buffer == NULL)
+	if (Buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
 			"Error: Can't write to %s\n", file);
 		exit(99);
 	}
 
-	return (buffer);
+	return (Buffer);
 }
 
 /**
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	Buffer = create_buffer(argv[2]);
+	Buffer = create_Buffer(argv[2]);
 	from = open(argv[1], O_RDONLY);
 	r = read(from, Buffer, 1024);
 	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
